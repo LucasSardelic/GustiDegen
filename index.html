@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="spoopy.gif" type="image/gif">
+<title>Gusti Degen</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #222;
+  }
+
+  #speed-control {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #speed-range {
+    width: 200px;
+  }
+  #container {
+      position: absolute;
+      width: 20vw;
+  }
+
+  #bouncing-image {
+    width: 100%;
+    display: block;
+  }
+
+  #bounce-sound {
+    width: 100%;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div id="speed-control">
+  <label for="speed-range">Speed:</label>
+  <input type="range" id="speed-range" min="1" max="100" value="1" />
+  <label for="corner-checkbox">Corner:</label>
+  <input type="checkbox" id="corner-checkbox" value="no">
+</div>
+
+<div id="container">
+  <img id="bouncing-image" src="./spoopy.gif" alt="Bouncing"/>
+  <audio id="bounce-sound" src="./bad to the bone.mp3" controls loop autoplay width="100%" height="100%"></audio>
+</div>
+
+<script>
+  const container = document.getElementById('container');
+  const audio = document.getElementById('bounce-sound');
+  const speedSlider = document.getElementById('speed-range');
+  const cornerCheckbox = document.getElementById('corner-checkbox');
+
+  let posX = 0;
+  let posY = 0;
+  let speed = parseInt(speedSlider.value);
+  let velocityX = speed;
+  let velocityY = speed;
+
+  speedSlider.addEventListener('input', () => {
+    speed = parseInt(speedSlider.value);
+    velocityX = velocityX < 0 ? -speed : speed;
+    velocityY = velocityY < 0 ? -speed : speed;
+  });
+
+  function bounce() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    posX += velocityX;
+    posY += velocityY;
+
+    let hitX = false;
+    let hitY = false;
+
+    if (posX + containerWidth >= screenWidth || posX <= 0) {
+      velocityX = -velocityX;
+      hitX = true;
+      playSound();
+    }
+
+    if (posY + containerHeight >= screenHeight || posY <= 0) {
+      velocityY = -velocityY;
+      hitY = true;
+      playSound();
+    }
+
+    container.style.left = posX + 'px';
+    container.style.top = posY + 'px';
+
+    if (hitX && hitY) {
+      playCornerSound(); // overlapping corner sound
+    }
+
+    container.style.left = posX + 'px';
+    container.style.top = posY + 'px';
+
+    requestAnimationFrame(bounce);
+  }
+
+  function playSound() {
+    audio.currentTime = 0;
+    audio.play();
+  }
+  function playCornerSound() {
+    if(cornerCheckbox.checked)
+    {
+      const newSound = new Audio("./corner.mp3");
+      newSound.play();
+    }
+  }
+
+  bounce();
+</script>
+</body>
+</html>
