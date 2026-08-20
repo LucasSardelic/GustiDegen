@@ -154,7 +154,6 @@ header .nav-links {
     height: 45%;
     width: 70%;
     max-width: 900px;
-    min-width: 400px;
     aspect-ratio: 16 / 9;
     height: auto;
 }
