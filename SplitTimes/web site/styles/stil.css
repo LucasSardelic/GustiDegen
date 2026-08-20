@@ -1,0 +1,596 @@
+/*opcenito*/
+* {
+    box-sizing: border-box;
+}
+
+/*#wrapper {
+  background-color: #fafafa;
+}*/
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.title-underline {
+    width: 80px;
+    height: 3px;
+    background-color: #c00a27;
+    display: block;
+    margin: 6px auto;
+}
+
+/*body*/
+body {
+    background: url("../slike/Split\(pixelized\).png") center center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Mali', cursive;
+    margin: 0;
+}
+
+/*header*/
+header {
+    position: sticky;
+    top: 0;
+    background-color: #180f2ebf;
+    padding: 16px 0;
+    z-index: 5;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    color: white;
+    margin: 0;
+    padding: 0 12px;
+    font-size: 32px;
+    line-height: 1.4em;
+    display: inline-block;
+}
+
+header .nav-links {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 0 0.8em;
+    font-weight: 600;
+}
+
+.page-title a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.page-title img {
+    height: 3em;
+    width: auto;
+    display: block;
+}
+
+.page-title h2 {
+    margin: 0;
+}
+
+/*synopsis*/
+#synopsis {
+    margin-top: 0px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: url("../slike/Flag-Croatia.jpg") center center no-repeat;
+    background-size: cover;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#synopsis-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#synopsis-title img {
+    max-height: 10em;
+    width: auto;
+}
+
+#synopsis-title h1 {
+    font-family: "sekuya";
+}
+
+.synopsis-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+}
+
+.text-content {
+    font-family: 'Mali', cursive;
+    color: aliceblue;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+/*trailer*/
+#trailer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: url("../slike/cinema-screen.png") center center no-repeat;
+    background-size: cover;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#trailer div {
+    position: relative;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#trailer div iframe {
+    position: relative;
+    z-index: 1;
+    width: 45%;
+    height: 45%;
+    width: 70%;
+    max-width: 900px;
+    min-width: 400px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+}
+
+#trailer div img {
+    bottom: 65%;
+    position: absolute;
+    z-index: 2;
+    width: 70%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+}
+
+/*reviews*/
+#reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("../slike/Oscar-statuettes.jpg") center center no-repeat;
+    background-size: cover;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.section-title {
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    text-align: center;
+    font-size: 50px;
+    line-height: 2em;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 30px;
+}
+
+/*character wheel*/
+#characters {
+    display: flex;
+    flex-direction: column;
+    background: url("../slike/newspaper.png") center center no-repeat;
+    background-size: cover;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#character-wheel {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.character-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 290px;
+    min-width: 290px;
+    margin: 0 4px;
+    padding: 20px 16px;
+    border-radius: 20px;
+    white-space: normal;
+    transition: all 0.3s ease;
+}
+
+.character-card:hover {
+    background-color: white;
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.2);
+}
+
+.character-image {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.character-name {
+    font-size: 20px;
+}
+
+/* Character pop up */
+#character-pop-up {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+#character-pop-up.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pop-up-content {
+    background-color: #f5f5f5;
+    padding: 2em;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    text-align: center;
+}
+
+.pop-up-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pop-up-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/*features*/
+#features {
+    display: flex;
+    flex-direction: column;
+    /*background: url("../slike/menu\ screen.png") center center no-repeat;*/
+    background-size: cover;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#features {
+    position: relative;
+}
+
+.features-content {
+    margin: auto;
+    margin-top: 16vw;
+}
+
+.steam-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+}
+
+.steam-content img {
+    transform: translate(-5vw) rotate(-10deg);
+}
+
+.first-steam-class {
+    font-size: 25vw;
+    position: absolute;
+    z-index: 2;
+    bottom: 20%;
+    left: 70%;
+    transform: translate(-10vw, -5vw);
+}
+
+.steam-link:visited {
+    color: darkblue;
+}
+
+.content-image {
+    max-width: 30vw;
+    transform: rotate(-10deg);
+}
+
+.fa-check-square {
+    color: green;
+}
+
+.fa-times-circle {
+    color: red;
+}
+
+.table {
+    margin: auto;
+    font-size: 2vw;
+    color: white;
+    border-spacing: 3vw 0;
+}
+
+.table th {
+    font-family: 'Lucida handwriting';
+}
+
+.menu-background {
+    position: absolute;
+    z-index: -1;
+    width: 65vw;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#steam-promo-text {
+    position: absolute;
+    z-index: 3;
+    top: 60%;
+    width: 60vw;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%) rotate(-20deg);
+}
+
+#click-here-text {
+    position: absolute;
+    z-index: 3;
+    top: 80%;
+    width: 40vw;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-65%) rotate(5deg);
+}
+
+/*news forecast*/
+.news-area {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    background: url("../slike/map.png") center center no-repeat;
+    background-size: cover;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+}
+
+.news-area img {
+    position: absolute;
+}
+
+.news-text {
+    position: absolute;
+    z-index: 2;
+    top: 10%;
+    /* fine-tune based on where the bubble's "inside" visually starts */
+    left: 8%;
+    /* fine-tune based on the bubble's left padding/shape */
+    width: 60%;
+    /* narrower than the bubble itself, to sit inside its rounded shape */
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+.speech-bubble {
+    width: 80%;
+    top: 0;
+    left: 0;
+}
+
+.news-guy {
+    width: 40%;
+    bottom: 0%;
+    left: 60%;
+}
+
+.red-button {
+    position: absolute;
+    width: 80%;
+    bottom: 5%;
+    left: 10%;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.red-button img {
+    display: block;
+    bottom: 0;
+    width: 20%;
+}
+
+/*jukebox*/
+#jukebox img {
+    position: fixed;
+    width: 15vw;
+    bottom: 0;
+    left: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #180f2ebf;
+    padding: 10px 0 10px;
+    color: white;
+}
+
+#footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer h4 {
+    font-size: 3vw;
+}
+
+#social-media-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 4vw;
+}
+
+.social-media-links {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid #999;
+    border-radius: 50%;
+    color: #999;
+    font-size: 24px;
+    transition: all 0.5s ease;
+}
+
+.social-media-links:hover {
+    background-color: #fff;
+    color: #c00a27;
+}
+
+/*jukebox playing*/
+#jukebox img.playing {
+    filter: drop-shadow(0 0 10px yellow);
+}
+
+#jukebox img {
+    cursor: pointer;
+    z-index: 3;
+}
+
+/*soparnik*/
+#soparnik-rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* container itself shouldn't block clicks on things below */
+    overflow: hidden;
+    z-index: 3;
+}
+
+.falling-soparnik {
+    position: absolute;
+    top: -100px;
+    width: 60px;
+    cursor: pointer;
+    pointer-events: auto;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    -webkit-user-drag: none; /* disables dragging in WebKit browsers (Chrome, Safari, Edge) */
+    user-select: none; /* prevents accidental text/image selection too */
+}
+
+@keyframes fall {
+    from {
+        top: -100px;
+    }
+    to {
+        top: 100vh;
+    }
+}
+
+@keyframes spin-right {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-left {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+#soparnik-counter {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    z-index: 6;
+}
+
+@media (max-width: 1023px) {
+    #soparnik-counter {
+        display: none;
+    }
+}
+
+.explosion-effect {
+    position: absolute;
+    width: 60px; /* match roughly to your soparnik size, or whatever looks right */
+    pointer-events: none; /* shouldn't be clickable itself */
+}
