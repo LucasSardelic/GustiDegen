@@ -408,6 +408,7 @@ ul li {
     background-size: cover;
     aspect-ratio: 16 / 9;
     margin: 0 auto;
+    container-type: inline-size;
 }
 
 .news-area img {
@@ -424,7 +425,7 @@ ul li {
     width: 60%;
     /* narrower than the bubble itself, to sit inside its rounded shape */
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 3cqw;
 }
 
 .speech-bubble {
