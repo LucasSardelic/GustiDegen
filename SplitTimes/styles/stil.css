@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /*#wrapper {
   background-color: #fafafa;
 }*/
@@ -22,11 +27,21 @@
 
 /*body*/
 body {
-    background: url("../slike/Split\(pixelized\).png") center center no-repeat;
+    background: url("../slike/Split-pixelized.webp") center center no-repeat;
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Mali', cursive;
     margin: 0;
+}
+
+:root {
+    --header-h: 80px;
+    /* fallback before JS runs */
+}
+
+section,
+#footer-content {
+    scroll-margin-top: calc(var(--header-h));
 }
 
 /*header*/
@@ -61,6 +76,30 @@ header .nav-links {
     font-weight: 600;
 }
 
+/*phone*/
+@media (max-width: 600px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 4px;
+    }
+
+    header .nav-links {
+        padding: 0 0.5em;
+    }
+
+    header {
+        padding: 8px 0;
+    }
+}
+
 .page-title a {
     display: flex;
     align-items: center;
@@ -86,7 +125,7 @@ header .nav-links {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: url("../slike/Flag-Croatia.jpg") center center no-repeat;
+    background: url("../slike/Flag-Croatia.webp") center center no-repeat;
     background-size: cover;
     max-width: 1000px;
     margin-left: auto;
@@ -96,24 +135,64 @@ header .nav-links {
 #synopsis-title {
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-
-#synopsis-title img {
-    max-height: 10em;
-    width: auto;
+    justify-content: center;
+    gap: clamp(4px, 2vw, 12px);
+    width: 100%;
+    padding: 0 8px;
 }
 
 #synopsis-title h1 {
     font-family: "sekuya";
+    font-size: clamp(1rem, 5.5vw, 2rem);
+    margin: 0.3em 0;
+    min-width: 0;
+}
+
+#synopsis-title img {
+    min-width: 0;
+    max-width: 25vw;
+    max-height: 10em;
+    width: auto;
+    height: auto;
 }
 
 .synopsis-content {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 12px;
     text-align: center;
+    width: 100%;
     max-width: 600px;
+    padding: 0 12px;
+}
+
+.synopsis-content .text-content {
+    flex: 1 1 58%;
+    min-width: 0;
+    font-size: clamp(0.7rem, 2.6vw, 1rem);
+}
+
+.synopsis-content img {
+    flex: 0 1 42%;
+    min-width: 0;
+}
+
+/* mobile: stack */
+@media (max-width: 600px) {
+    .synopsis-content {
+        flex-direction: column;
+    }
+
+    .synopsis-content .text-content,
+    .synopsis-content img {
+        flex: 0 1 auto;
+        width: 100%;
+    }
+
+    .synopsis-content img {
+        max-width: 220px;
+    }
 }
 
 .text-content {
@@ -131,7 +210,7 @@ header .nav-links {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    background: url("../slike/cinema-screen.png") center center no-repeat;
+    background: url("../slike/cinema-screen.webp") center center no-repeat;
     background-size: cover;
     max-width: 1000px;
     margin: auto;
@@ -139,9 +218,7 @@ header .nav-links {
 
 #trailer div {
     position: relative;
-    margin-top: 200px;
-    margin-bottom: 200px;
-    ;
+    margin: 15vw 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,8 +227,6 @@ header .nav-links {
 #trailer div iframe {
     position: relative;
     z-index: 1;
-    width: 45%;
-    height: 45%;
     width: 70%;
     max-width: 900px;
     aspect-ratio: 16 / 9;
@@ -173,7 +248,7 @@ header .nav-links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url("../slike/Oscar-statuettes.jpg") center center no-repeat;
+    background: url("../slike/Oscar-statuettes.webp") center center no-repeat;
     background-size: cover;
     max-width: 1000px;
     margin: auto;
@@ -207,7 +282,7 @@ ul li {
 #characters {
     display: flex;
     flex-direction: column;
-    background: url("../slike/newspaper.png") center center no-repeat;
+    background: url("../slike/newspaper.webp") center center no-repeat;
     background-size: cover;
     max-width: 1000px;
     margin: auto;
@@ -404,7 +479,7 @@ ul li {
     position: relative;
     width: 100%;
     max-width: 1000px;
-    background: url("../slike/map.png") center center no-repeat;
+    background: url("../slike/map.webp") center center no-repeat;
     background-size: cover;
     aspect-ratio: 16 / 9;
     margin: 0 auto;
@@ -526,7 +601,8 @@ footer h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* container itself shouldn't block clicks on things below */
+    pointer-events: none;
+    /* container itself shouldn't block clicks on things below */
     overflow: hidden;
     z-index: 3;
 }
@@ -540,14 +616,17 @@ footer h4 {
     animation-name: fall;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
-    -webkit-user-drag: none; /* disables dragging in WebKit browsers (Chrome, Safari, Edge) */
-    user-select: none; /* prevents accidental text/image selection too */
+    -webkit-user-drag: none;
+    /* disables dragging in WebKit browsers (Chrome, Safari, Edge) */
+    user-select: none;
+    /* prevents accidental text/image selection too */
 }
 
 @keyframes fall {
     from {
         top: -100px;
     }
+
     to {
         top: 100vh;
     }
@@ -557,6 +636,7 @@ footer h4 {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -566,6 +646,7 @@ footer h4 {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(-360deg);
     }
@@ -591,6 +672,8 @@ footer h4 {
 
 .explosion-effect {
     position: absolute;
-    width: 60px; /* match roughly to your soparnik size, or whatever looks right */
-    pointer-events: none; /* shouldn't be clickable itself */
+    width: 60px;
+    /* match roughly to your soparnik size, or whatever looks right */
+    pointer-events: none;
+    /* shouldn't be clickable itself */
 }

@@ -21,25 +21,25 @@ const characters = [
     {
         id: 4,
         name: "Van-sama",
-        image: "./slike/characters/darkholme.png",
+        image: "./slike/characters/darkholme.webp",
         description: "This living legend has retired from his illustrious acting carreer. Now, he's just a humble real estate agent who just wants to live the rest of his days in peace in this lovely city."
     },
     {
         id: 5,
         name: "Your local dealer",
-        image: "./slike/characters/scammer.png",
+        image: "./slike/characters/scammer.webp",
         description: "Just your friendly neighborhood dealer, and it looks like he now deals in house as well!"
     },
     {
         id: 6,
         name: "Supermarket worker",
-        image: "./slike/characters/studenac_angry.png",
+        image: "./slike/characters/studenac-angry.webp",
         description: "Here to fulfill the women iclusivity quota. She's always pissed, but my lawyer has advised me not to make further jokes about that."
     },
     {
         id: 7,
         name: "The Beast",
-        image: "./slike/characters/Bruno3.png",
+        image: "./slike/characters/Bruno3.webp",
         description: "One of the three board executives of the speculator conglomerate that has been poisoning this city. They are the main cause all the prices skyrocketed. Vicious and greedy, they will stop at nothing to see your endeavor fail. The most heinous acts are but child's play to them, so tread very carefully..."
     }
 ];
@@ -101,6 +101,13 @@ document.querySelector(".pop-up-close").addEventListener("click", () => {
     document.querySelector("#character-pop-up").classList.remove("active");
 });
 
+//close popup when clicking outside the card
+document.querySelector("#character-pop-up").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) {
+        document.querySelector("#character-pop-up").classList.remove("active");
+    }
+});
+
 //button change of sprite
 const buttonImg = document.querySelector("#red-button-image");
 let lock = false;
@@ -114,7 +121,7 @@ function pressButton(e) {
 
 function releaseButton(e) {
     e.preventDefault();
-    buttonImg.src = "./slike/red button unpressed.png";
+    buttonImg.src = "./slike/red-button-unpressed.png";
     if (lock == true) {
         changeNewsText();
         lock = false;
@@ -175,7 +182,9 @@ function buttonPressSFX(){
 */
 
 //jukebox
-const jukeboxSound = new Audio("./audio/pjesma.mp3");
+const jukeboxSound = new Audio();
+jukeboxSound.preload = "none";
+jukeboxSound.src = "./audio/pjesma.mp3";
 jukeboxSound.loop = true;
 jukeboxSound.volume = 0.3;
 
@@ -202,7 +211,7 @@ if (window.innerWidth < 1024) {
     }
 
     const soparnik = document.createElement("img");
-    soparnik.src = "./slike/soparnik.png";
+    soparnik.src = "./slike/soparnik.webp";
     soparnik.classList.add("falling-soparnik");
     soparnik.draggable = false;
 
@@ -240,9 +249,6 @@ if (window.innerWidth < 1024) {
         }
     });
 
-    soparnik.addEventListener("mousedown", catchSoparnik);
-    soparnik.addEventListener("touchstart", catchSoparnik);
-
     function catchSoparnik(e) {
         e.preventDefault();
 
@@ -276,3 +282,13 @@ function spawnExplosionEffect(x, y) {
         explosion.remove();
     }, 600); // adjust to match your GIF's actual duration in milliseconds
 }
+
+//resize header
+const header = document.querySelector('header');
+
+new ResizeObserver(() => {
+  document.documentElement.style.setProperty(
+    '--header-h',
+    header.offsetHeight + 'px'
+  );
+}).observe(header);
